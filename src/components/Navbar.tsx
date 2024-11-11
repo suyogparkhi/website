@@ -5,6 +5,7 @@ import { MenuIcon } from "lucide-react";
 import { Button } from "./ui/button";
 import Link from "next/link";
 import { CrossIcon } from "lucide-react";
+import { ConnectWallet } from './ConnectWallet';
 
 import { RefObject } from "react";
 
@@ -91,6 +92,8 @@ export const Navbar = ({ featuresRef, updatesRef }: NavbarProps) => {
               <Button className="bg-slate-800">
                 <Link href="/models">Dashboard</Link>
               </Button>
+
+              <ConnectWallet />
             </nav>
           </div>
 
