@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import { WagmiProvider } from 'wagmi';
+import { config } from '../lib/wagmi';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { RainbowKitProvider} from '@rainbow-me/rainbowkit';
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -23,12 +27,19 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const queryClient = new QueryClient();
   return (
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-black`}
       >
-        {children}
+        <WagmiProvider config={config}>
+          <QueryClientProvider client={queryClient}>
+            <RainbowKitProvider>
+              {children}
+            </RainbowKitProvider>
+          </QueryClientProvider>
+        </WagmiProvider>
       </body>
     </html>
   );

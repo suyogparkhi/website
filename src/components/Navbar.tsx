@@ -5,15 +5,16 @@ import { MenuIcon } from "lucide-react";
 import { Button } from "./ui/button";
 import Link from "next/link";
 import { CrossIcon } from "lucide-react";
-import { ConnectWallet } from './ConnectWallet';
+
 
 import { RefObject } from "react";
+import { useRouter } from "next/router";
+import { ConnectButton } from "@rainbow-me/rainbowkit";
 
 interface NavbarProps {
   featuresRef: RefObject<HTMLElement>;
   updatesRef: RefObject<HTMLElement>;
 }
-
 export const Navbar = ({ featuresRef, updatesRef }: NavbarProps) => {
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -93,7 +94,8 @@ export const Navbar = ({ featuresRef, updatesRef }: NavbarProps) => {
                 <Link href="/models">Dashboard</Link>
               </Button>
 
-              <ConnectWallet />
+                <ConnectButton />
+
             </nav>
           </div>
 
@@ -118,6 +120,10 @@ export const Navbar = ({ featuresRef, updatesRef }: NavbarProps) => {
               <Button className="inline animate-gradient bg-gradient-to-r from-[#ffaa40] via-[#9c40ff] to-[#ffaa40] bg-[length:var(--bg-size)_100%] bg-clip-text text-transparent">
                 <Link href="/models">Datasets</Link>
               </Button>
+
+              <div className="mt-4">
+                <ConnectButton />
+              </div>
             </nav>
           </div>
 
